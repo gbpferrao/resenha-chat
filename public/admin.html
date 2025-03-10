@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resenha - Painel Admin</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Admin Login Overlay -->
+  <div id="admin-login-overlay" class="admin-login-overlay">
+    <div class="admin-login-container">
+      <h2>Admin Access</h2>
+      <p>Digite a senha administrativa</p>
+      <div class="admin-login-input-container">
+        <input type="password" id="admin-password-input" placeholder="Senha admin">
+        <button id="admin-login-btn">
+          <i class="fas fa-lock-open"></i> Acessar
+        </button>
+      </div>
+      <p id="admin-login-error" class="admin-login-error"></p>
+    </div>
+  </div>
+
+  <!-- Admin Panel -->
+  <div id="admin-panel" class="admin-panel" style="display: none;">
+    <header class="admin-header">
+      <h1>Resenha - Painel Admin</h1>
+      <div class="admin-actions">
+        <button id="logout-admin-btn">
+          <i class="fas fa-sign-out-alt"></i> Sair
+        </button>
+      </div>
+    </header>
+
+    <main class="admin-main">
+      <div class="admin-section">
+        <h2>Configurar Senha Diária</h2>
+        <div class="password-manager">
+          <div class="current-password-display">
+            <h3>Senha Atual</h3>
+            <div class="password-display">
+              <span id="current-password">resenha123</span>
+              <button id="toggle-password-visibility" title="Mostrar/Esconder senha">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+          
+          <div class="password-update-form">
+            <h3>Atualizar Senha</h3>
+            <div class="password-input-group">
+              <input type="password" id="new-password" placeholder="Nova senha">
+              <button id="update-password-btn">Atualizar</button>
+            </div>
+            <div class="password-schedule">
+              <h3>Programar Alteração</h3>
+              <div class="schedule-input-group">
+                <input type="date" id="scheduled-date">
+                <input type="password" id="scheduled-password" placeholder="Senha programada">
+                <button id="schedule-password-btn">Programar</button>
+              </div>
+            </div>
+            <div id="scheduled-passwords-list" class="scheduled-passwords-list">
+              <!-- Scheduled passwords will appear here -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-section">
+        <h2>Histórico de Usuários</h2>
+        <div class="user-history-container">
+          <div class="user-history-header">
+            <div class="user-history-filters">
+              <select id="history-filter">
+                <option value="all">Todos os dispositivos</option>
+                <option value="active">Ativos hoje</option>
+              </select>
+              <button id="refresh-history-btn">
+                <i class="fas fa-sync-alt"></i> Atualizar
+              </button>
+            </div>
+          </div>
+          <div class="user-history-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Nome de Usuário</th>
+                  <th>Dispositivo</th>
+                  <th>Último Acesso</th>
+                  <th>Total de Acessos</th>
+                </tr>
+              </thead>
+              <tbody id="user-history-data">
+                <!-- User data will be populated here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  
+  <!-- Your scripts -->
+  <script src="js/firebase-config.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html> 
